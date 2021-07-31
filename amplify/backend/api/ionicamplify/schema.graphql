@@ -1,0 +1,15 @@
+type Todo @model @auth(rules: [{ allow: owner, identityClaim: "sub" }]) {
+  id: ID!
+  name: String!
+  description: String,
+  owner: String,
+  tasks: [Task] @connection(name: "TodoTasks") #relationship
+}
+
+type Task @model @auth(rules: [{ allow: owner, identityClaim: "sub" }]) {
+  id: ID!
+  name: String!
+  description: String!
+  todo: Todo @connection(name: "TodoTasks")
+  owner: String
+}

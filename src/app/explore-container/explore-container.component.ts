@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-explore-container',
@@ -8,8 +9,33 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ExploreContainerComponent implements OnInit {
   @Input() name: string;
 
-  constructor() { }
+  loggedIn: boolean;
+
+  constructor(
+    private authService: AuthenticationService
+  ) {
+
+    this.authService.isAuthenticated()
+    .subscribe(
+      (loggedIn => {
+        if (!loggedIn) {
+          this.loggedIn = true        }
+      })
+    );
+
+   }
 
   ngOnInit() {}
+
+  async signOut() {
+    this.authService.signOut()
+  }
+
+  signIn () {
+    
+  }
+  
+
+
 
 }

@@ -1,4 +1,9 @@
-<div id="container">
+<div id="container" >
   <strong>{{ name }}</strong>
   <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  
+  <div class="ion-padding-top">
+    <ion-button [hidden]="loggedIn" (click)="signOut()">Sign Out</ion-button>
+    <ion-button [hidden]="!loggedIn" (click)="signIn()">Sign Out</ion-button>
+  </div>
 </div>

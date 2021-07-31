@@ -1,12 +1,12 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Tab 2
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content [fullscreen]="true">
+<!-- <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 2</ion-title>
@@ -14,4 +14,35 @@
   </ion-header>
 
   <app-explore-container name="Tab 2 page"></app-explore-container>
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="user">
+      {{user.username + '\'s list' }}
+    </ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-button (click)="modify(null, null)">Add Item</ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content *ngIf="todoItems">
+  <ion-card *ngFor="let item of todoItems; index as i">
+    <ion-card-title class="hover card-title">{{item.name}}</ion-card-title>
+    <ion-card-content>{{item.description}} </ion-card-content>
+    <ion-card-subtitle>
+      <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-button (click)="delete(item, i)">
+            <ion-icon name="trash" size="small"></ion-icon>Delete
+          </ion-button>
+          <!-- <ion-button (click)="complete(i)">
+            <ion-icon name="checkmark-circle" size="small"></ion-icon>Mark Complete
+          </ion-button> -->
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-card-subtitle>
+  </ion-card>
 </ion-content>
