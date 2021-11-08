@@ -25,9 +25,30 @@
               "userPoolId": "authionicamplifyc3204c30"
             }
           },
-          "additionalAuthenticationProviders": []
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
         }
       }
+    }
+  },
+  "function": {
+    "testFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "ionicamplify",
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ]
+        }
+      ]
     }
   }
 }

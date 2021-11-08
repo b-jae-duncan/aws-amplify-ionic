@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "api": {
+      "ionicamplify": [
+        "Query",
+        "Mutation"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
